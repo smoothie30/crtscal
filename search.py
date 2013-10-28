@@ -114,8 +114,14 @@ def print_info(i):
 		s += '\t' + d["bldg"]
 	if "room" in d:
 		s += ' - ' + d["room"]
+	# some descriptions just echo the title
+	# only show longer descriptions
+	if len(d["descr"]) > 1:
+		for line in d["descr"]:
+			s += "\n" + line
 	return s
 
+# html output
 output = ""
 for i in parsed_feed.entries:
 	# find personal events (lessons) by name AND teachers
